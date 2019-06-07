@@ -7,9 +7,12 @@
 
 #include <SFML/Graphics.hpp>
 #include <utility> // forward
+#include <iostream>
+
+#include "Object.h"
 
 template<typename ShapeType>
-class Lense {
+class Lense : public Object {
 
 public:
 
@@ -24,7 +27,7 @@ public:
         lineThickness = lt;
     }
 
-    void draw(const sf::RenderWindow& window) {
+    void draw(sf::RenderWindow& window) override {
         window.draw(shape);
     }
 
