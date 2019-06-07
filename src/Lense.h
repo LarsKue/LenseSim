@@ -19,12 +19,12 @@ public:
     template<typename... Args>
     explicit Lense(Args... args) : shape(std::forward<Args>(args)...) {
         shape.setFillColor(sf::Color(0, 0, 0, 0));
-        shape.setOutlineThickness(lineThickness);
-        shape.setOutlineColor(sf::Color(255, 255, 255));
+        shape.setOutlineThickness(0.5f);
+        shape.setOutlineColor(sf::Color(255, 255, 255, 125));
     }
 
     void set_line_thickness(float lt) {
-        lineThickness = lt;
+        shape.setOutlineThickness(lt);
     }
 
     void draw(sf::RenderWindow& window) override {
@@ -35,7 +35,7 @@ public:
 private:
 
     ShapeType shape;
-    float lineThickness = 0.5f;
+    double refractiveIndex = 1.0;
 
 };
 

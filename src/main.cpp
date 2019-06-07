@@ -7,11 +7,12 @@
 #include <iostream>
 #include <ratio>
 #include "Lense.h"
+#include "Photon.h"
 #include "Object.h"
 
 
-constexpr int window_width = 1920;
-constexpr int window_height = 1080;
+constexpr int window_width = 1600;
+constexpr int window_height = 900;
 constexpr std::ratio<window_width, window_height> aspect_ratio;
 constexpr int anti_aliasing_level = 8;
 constexpr int window_flags = sf::Style::Close;
@@ -25,7 +26,10 @@ int main() {
     sf::RenderWindow window(sf::VideoMode(window_width, window_height), "LenseSim", window_flags, settings);
 
     auto om = ObjectManager();
-    auto lense_test = om.addObject<Lense<sf::CircleShape>>(100.f, 100);
+    auto lense_test = om.addObject<Lense<sf::CircleShape>>(100.f, 30);
+    auto lense_test2 = om.addObject<Lense<sf::CircleShape>>(20.f, 3);
+
+    auto photon_test = om.addObject<Photon>(100, 100);
 
     while (window.isOpen()) {
         sf::Event event;
