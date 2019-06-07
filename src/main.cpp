@@ -4,18 +4,22 @@
 
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include <iostream>
+#include <ratio>
 #include "Lense.h"
 
 
 constexpr int window_width = 1920;
 constexpr int window_height = 1080;
-constexpr double aspect_ratio = static_cast<double>(window_width) / window_height;
+constexpr std::ratio<window_width, window_height> aspect_ratio;
 constexpr int anti_aliasing_level = 8;
 constexpr int window_flags = sf::Style::Close;
 
 //std::vector<
 
 int main() {
+    std::cout << "Launching..." << std::endl;
+    std::cout << "Aspect Ratio:" << aspect_ratio.num << ":" << aspect_ratio.den << std::endl;
     sf::ContextSettings settings;
     settings.antialiasingLevel = anti_aliasing_level;
     sf::RenderWindow window(sf::VideoMode(window_width, window_height), "LenseSim", window_flags, settings);
