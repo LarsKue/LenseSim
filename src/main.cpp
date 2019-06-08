@@ -78,6 +78,7 @@ int main() {
         }
         ++framesum;
 
+        om.clean();
         om.update(dt);
 
         window.clear();
