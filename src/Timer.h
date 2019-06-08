@@ -35,8 +35,8 @@ public:
     }
 
 private:
-    time_point constructtime = std::chrono::steady_clock::now();
-    time_point starttime = std::chrono::steady_clock::now();
+    time_point constructtime = clock_type::now();
+    time_point starttime = clock_type::now();
     duration dt = duration(0);
 
 };
