@@ -37,7 +37,7 @@ public:
 private:
     time_point constructtime = std::chrono::steady_clock::now();
     time_point starttime = std::chrono::steady_clock::now();
-    duration dt = std::chrono::nanoseconds(0);
+    duration dt = duration(0);
 
 };
 
