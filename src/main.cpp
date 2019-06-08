@@ -73,6 +73,9 @@ int main() {
         if (dt > worstframetime) {
             worstframetime = timer.delta_time();
         }
+        if (framesum % 10 == 0) {
+            std::cout << 1/dt << std::endl;
+        }
         ++framesum;
 
         om.update(dt);
