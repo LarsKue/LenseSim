@@ -49,11 +49,14 @@ int main() {
 //    photon_test->getTrait<PhysicsTrait>()->pos = {300, 300};
 //    photon_test->getTrait<PhysicsTrait>()->vel = {5, 5};
 
-    for (unsigned i = 0; i < 40000; ++i) {
+    for (unsigned i = 0; i < 10000; ++i) {
         auto p = om.addObject<Photon>();
-        p->getTrait<PhysicsTrait>()->pos = {getRandom(400, window_width - 400), getRandom(400, window_height - 400)};
+        p->getTrait<PhysicsTrait>()->pos = {getRandom(750, window_width - 750), getRandom(400, window_height - 400)};
         p->getTrait<PhysicsTrait>()->vel = {getRandom(-20, 20), getRandom(-20, 20)};
     }
+
+    double worstframetime = 0;
+    unsigned framesum = 0;
 
     Timer timer;
     while (window.isOpen()) {
@@ -66,7 +69,13 @@ int main() {
             }
         }
 
-        om.update(timer.delta_time());
+        double dt = timer.delta_time();
+        if (dt > worstframetime) {
+            worstframetime = timer.delta_time();
+        }
+        ++framesum;
+
+        om.update(dt);
 
         window.clear();
 
@@ -77,5 +86,8 @@ int main() {
 
         timer.stop();
     }
+
+    std::cout << "Worst Frame Time: " << worstframetime << std::endl;
+    std::cout << "Average Frame Time: " << timer.time_elapsed() / framesum << std::endl;
     return 0;
 }
