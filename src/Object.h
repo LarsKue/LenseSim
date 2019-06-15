@@ -12,6 +12,8 @@
 #include <memory>
 #include <algorithm>
 
+#include "CollisionManager.h"
+
 constexpr int max_trait_num = 32;
 
 using TraitID = std::size_t;
@@ -90,6 +92,7 @@ protected:
 };
 
 class ObjectManager {
+
 public:
 
     ObjectManager() = default;
@@ -99,6 +102,7 @@ public:
         T* ptr = new T(std::forward<Args>(args)...);
         objects.emplace_back(std::unique_ptr<Object>(ptr));
         ptr->init();
+        cm.addObject(ptr);
         return ptr;
     }
 
@@ -111,6 +115,7 @@ public:
 private:
 
     std::vector<std::unique_ptr<Object>> objects = {};
+    CollisionManager cm = CollisionManager();
 
 };
 

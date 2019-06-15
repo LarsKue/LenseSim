@@ -14,6 +14,9 @@
 #include "Timer.h"
 
 
+#include "CollisionManager.h"
+
+
 constexpr int window_width = 1600;
 constexpr int window_height = 900;
 constexpr std::ratio<window_width, window_height> aspect_ratio;
@@ -79,6 +82,7 @@ int main() {
         ++framesum;
 
         om.clean();
+
         om.update(dt);
 
         window.clear();

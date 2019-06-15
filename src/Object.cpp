@@ -73,6 +73,7 @@ void ObjectManager::update(double dt) {
     for (auto& o : objects) {
         o->update(dt);
     }
+    cm.update(dt);
 }
 
 void ObjectManager::draw(sf::RenderWindow& window) {
