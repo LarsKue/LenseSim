@@ -19,18 +19,20 @@ public:
     void init() override {
         Object::init();
         shape.setFillColor(sf::Color(255, 255, 255, 125));
-        pt = addTrait<PhysicsTrait>();
+        auto pt = addTrait<PhysicsTrait>();
         shape.setPosition(pt->pos.x, pt->pos.y);
     }
 
     void update(double dt) override {
         Object::update(dt);
+        auto pt = getTrait<PhysicsTrait>();
         shape.setPosition(pt->pos.x, pt->pos.y);
     }
 
     void draw(sf::RenderWindow& window) override {
         Object::draw(window);
         auto windowSize = window.getSize();
+        auto pt = getTrait<PhysicsTrait>();
         if (pt->pos.x < 0 || pt->pos.y < 0 || pt->pos.x > windowSize.x || pt->pos.y > windowSize.y) {
             return;
         }
@@ -41,7 +43,6 @@ public:
 private:
 
     sf::CircleShape shape = sf::CircleShape(1, 3);
-    PhysicsTrait* pt = nullptr;
 
 };
 

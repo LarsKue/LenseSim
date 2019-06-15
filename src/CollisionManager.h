@@ -1,5 +1,5 @@
 //
-// Created by Lars on 15.06.2019.
+// Created by Lars on 15/06/2019.
 //
 
 #ifndef LENSESIM_COLLISIONMANAGER_H

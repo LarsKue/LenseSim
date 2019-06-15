@@ -58,6 +58,9 @@ public:
 
     template<typename T, typename... Args>
     T* addTrait(Args... args) {
+        if (hasTrait<T>()) {
+            getTrait<T>()->destroy();
+        }
         T* ptr = new T(std::forward<Args>(args)...);
         traits.emplace_back(std::unique_ptr<Trait>(ptr));
         traits_arr[getTraitID<T>()] = ptr;
