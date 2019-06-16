@@ -15,6 +15,7 @@
 
 
 #include "CollisionManager.h"
+#include "Line.h"
 
 
 constexpr int window_width = 1600;
