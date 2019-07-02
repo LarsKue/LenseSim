@@ -14,9 +14,8 @@ class PhysicsTrait : public Trait {
 public:
 
     void update(double dt) override {
-        // TODO: Runge-Kutta
 
-        // we use implicit Euler for now
+        // implicit Euler is sufficient for constant velocities (i.e. no force)
         if (!almost_equal(mass, 0.0)) {
             // update velocity based on force
             vel += (force / mass) * dt;

@@ -26,8 +26,9 @@ std::optional<Vec2<>> Line::intersection(const Line& other) const {
         // lines are collinear or parallel, and may barely intersect, but we ignore this collision
         return {};
     }
-    double t = (q - p).cross_product(s) / rxs;
-    double u = (q - p).cross_product(r) / rxs;
+    auto qmp = (q - p);
+    double t = qmp.cross_product(s) / rxs;
+    double u = qmp.cross_product(r) / rxs;
     if (t >= 0 && t <= 1 && u >= 0 && u <= 1) {
         // the lines intersect at p + tr = q + us
         return p + t * r;
